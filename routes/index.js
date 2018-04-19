@@ -9,15 +9,16 @@ router.get("/", function(req,res){
    res.render("landing"); 
 });
 
+
 //====================
 //AUTHENTICATION ROUTES
 //====================
 
 //REGISTER ROUTES
 
-//Renddr Sign Up Form
+//Render Sign Up Form
 router.get("/register", function(req, res) {
-    res.render("register");
+    res.render("register", {page: 'register'});
 })
 
 
@@ -27,10 +28,10 @@ router.post("/register", function(req,res){
     var newUser = new User({username: req.body.username});
     User.register(newUser, req.body.password, function(err,user){
         if(err){
-            req.flash("error", err.message);
-            console.log(err)
-            return res.redirect("/register");
-        } else {
+            console.log(err);
+            return res.render("register", {error: err.message});
+        }
+        else {
             passport.authenticate("local")(req, res, function(){
                 req.flash("success", "Hello " + user.username +", Welcome Welcome Welcome!")    
                 res.redirect("/campgrounds");
@@ -41,15 +42,15 @@ router.post("/register", function(req,res){
 
 //LOGIN/OUT ROUTES
 
-//Renddr Login Form
+//Render Login Form
 router.get("/login", function(req, res) {
-   res.render("login") 
+   res.render("login", {page: 'login'}) 
 });
 
 //Login Logic
 router.post("/login", passport.authenticate("local", {
         successRedirect: "/campgrounds",
-        failureRedirect: "/login"
+        failureRedirect: "/login", 
     }), function(req, res) {
 });
 

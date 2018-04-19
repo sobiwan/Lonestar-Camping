@@ -1,5 +1,5 @@
 <% include ../partials/header %>
-<div class="container">
+
     <div class="row">
         <div class="col-md-3">
             <div>
@@ -19,9 +19,8 @@
                     <h4><a><%=campground.name%></a></h4>
                     <p><%= campground.description%></p>
                     <p>
-                        <em>Sumbitted by <strong><%= campground.author.username%></strong></em>
+                      <em>Submitted by: <strong><%= campground.author.username %></strong>, <%= moment(campground.createdAt).fromNow() %></em>
                     </p>
-                    
                     <% if(currentUser && campground.author.id.equals(currentUser._id)) {%>
                         <a class="btn btn-xs btn-warning" href="/campgrounds/<%=campground._id%>/edit">Edit</a>
                         <form class="delete-form" action="/campgrounds/<%=campground._id%>?_method=delete" method="POST">
@@ -39,7 +38,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <strong><%= comment.author.username %></strong>
-                            <span class="pull-right">10 days ago</span>
+                            <span class="pull-right"><%= moment(comment.createdAt).fromNow() %></span>
                             <p>
                                 <%= comment.text %>  
                             </p>
@@ -59,6 +58,6 @@
             </div>
         </div>
     </div>
-</div>
+
 
 <% include ../partials/footer %>

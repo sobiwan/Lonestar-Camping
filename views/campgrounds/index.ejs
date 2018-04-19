@@ -1,6 +1,5 @@
 <% include ../partials/header %>
 
-<div class="container">
     <header class="jumbotron">
         <div class="container">
             <h1>Welcome to Lone Star Camping</h1>
@@ -19,9 +18,9 @@
     
     <div class="row text-center" style="display:flex; flex-wrap: wrap;">    
         <% campgrounds.forEach (function(campground) { %>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="thumbnail">
-                    <img class="show" src="<%=campground.image%>"></img>
+                    <img class="img-fluid" alt="Responsive image" src="<%=campground.image%>"></img>
                     <div class="caption">
                         <h4><%=campground.name %></h4>
                     </div>
@@ -35,12 +34,5 @@
         
     </div>
     
-
-    
-
-</div>
-
-
-
 
 <% include ../partials/footer %>

@@ -28,7 +28,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
-// seedDB(); //Seed the Database
+seedDB(); //Erase and Seed the Database
+app.locals.moment = require('moment');
 
 //PASSPORT CONFIG
 app.use(require("express-session")({
