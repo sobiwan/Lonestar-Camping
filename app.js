@@ -15,10 +15,10 @@ var express = require("express"),
 
 var commentRoutes = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
-    indexRoutes = require("./routes/index"),
-    url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp";
+    indexRoutes = require("./routes/index");
+    
 
-
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp";
 mongoose.connect(url);
 // mongoose.connect("mongodb://SOB:NDirish1@ds243059.mlab.com:43059/lonestarcamps");
 // mongoose.connect("mongodb://localhost/yelp_camp");
